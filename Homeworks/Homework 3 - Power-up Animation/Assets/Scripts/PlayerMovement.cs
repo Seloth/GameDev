@@ -80,14 +80,12 @@ public class PlayerMovement : MonoBehaviour {
 			}
 			animator.SetBool("IsJumping", false);
 		}
-	}
 
-	private void OnTriggerEnter2D(Collider2D other)
-	{
-		if (other.gameObject.CompareTag("Mushroom"))
+		if (collision.gameObject.CompareTag("Mushroom"))
 		{
 			animator.runtimeAnimatorController = Resources.Load("Animations/Mario/Big Mario") as RuntimeAnimatorController;
-			Destroy(other.gameObject);
+			Destroy(collision.gameObject);
 		}
 	}
+
 }
