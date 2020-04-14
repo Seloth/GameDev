@@ -36,7 +36,7 @@ public class Health : MonoBehaviour {
 		if (collision.transform.parent != transform
 			&& collision.gameObject.CompareTag("Hitbox")) {
 
-			if (!animator.GetBool("IsCrouching"))
+			if (!animator.GetBool("IsInvincible"))
 			{
 				TakeDamage();
 

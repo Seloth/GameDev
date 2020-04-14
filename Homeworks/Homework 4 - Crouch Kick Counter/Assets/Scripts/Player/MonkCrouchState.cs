@@ -12,6 +12,7 @@ public class MonkCrouchState : StateMachineBehaviour
 		movementController = animator.GetComponent<MovementController>();
 		movementController.Crouch();
 		animator.SetBool("IsCrouching", true);
+		animator.SetBool("IsInvincible", true);
 	}
 
 	override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -30,6 +31,11 @@ public class MonkCrouchState : StateMachineBehaviour
 		{
 			animator.SetTrigger("IsCrouchKicking");
 		}
+	}
+
+	public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+	{
+		animator.SetBool("IsInvincible", false);
 	}
 
 }
