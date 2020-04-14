@@ -20,6 +20,7 @@ public class AICrouchState : StateMachineBehaviour
 		player = GameObject.FindWithTag("Player").transform;
 		float directionToPlayer = player.position.x - animator.transform.position.x;
 		movementController.TurnTowards(directionToPlayer);
+		animator.SetBool("IsInvincible", true);
 	}
 
 	override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -32,5 +33,10 @@ public class AICrouchState : StateMachineBehaviour
 			animator.SetTrigger("ShouldCrouchKick");
 		}
 
+	}
+
+	public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+	{
+		animator.SetBool("IsInvincible", false);
 	}
 }
